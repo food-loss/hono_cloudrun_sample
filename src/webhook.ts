@@ -8,9 +8,7 @@ webhook.post('notify',async(c) => {
     const headers = {
         'Content-Type': 'application/json'
     }
-    const message = `クーポンが発行されました。
-    下記のサイトでクーポンを取得してください。
-    https://someurl.com/foo?a=${c.req.a}&b=${c.req.b}`;
+    const message = `クーポンが発行されました。  下記のサイトでクーポンを取得してください。  https://someurl.com/foo?a=${c.req.a}&b=${c.req.b}`;
     const options = {
         method: 'POST',
         headers : headers,
