@@ -8,8 +8,7 @@ webhook.post('notify',async(c) => {
     const headers = {
         'Content-Type': 'application/json'
     }
-
-    const c_req = JSON.parse(c.req)
+    const c_req = JSON.parse(c.req.text())
     const message = `クーポンが発行されました。 次のサイトでクーポンを取得してください。  https://wide-exchanger-394315.web.app/fizz?date=${c_req.date}&record-no=${c_req.record_no}`;
     const options = {
         method: 'POST',
