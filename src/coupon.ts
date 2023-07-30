@@ -6,7 +6,7 @@ export const coupon = new Hono();
 coupon.use(
   '*',
   cors({
-    origin: 'https://wide-exchanger-394315.web.app',
+    origin: '*',
     allowHeaders: ['Content-Type'],
     allowMethods: ['POST', 'GET', 'OPTIONS'],
     maxAge: 600,
