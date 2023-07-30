@@ -10,6 +10,8 @@ app.get('/hello', (c) => c.text('hello'));
 export const route = app.route('/webhook', webhook);
 app.route('/coupon', coupon);
 
+console.log('up');
+
 export default {
   port,
   fetch: app.fetch,
