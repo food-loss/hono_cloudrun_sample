@@ -8,7 +8,13 @@ webhook.post('notify',async(c) => {
     const headers = {
         'Content-Type': 'application/json'
     }
-    const json = JSON.parse(await c.req.body());
+
+    type msg = {
+      a: string
+      b: string
+    }
+    
+    const json = JSON.parse(await c.req.body()) as msg
     const message = `クーポンが発行されました。\n\n下記のサイトでクーポンを取得してください。\n\nhttps://someurl.com/foo?a=${json.a}&b=${json.b}`;
     const options = {
         method: 'POST',
@@ -16,5 +22,5 @@ webhook.post('notify',async(c) => {
         body: JSON.stringify({ text: message })
     }
     const res = await fetch(url, options)
-    return res;
+    return res
 })
