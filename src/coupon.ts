@@ -2,6 +2,7 @@ import { Hono } from "hono";
 
 export const coupon = new Hono();
 
+// クーポン利用登録データへ登録
 coupon.post('schedule',async(c) => {
     const url = 'https://jb-foodloss-service.cybozu.com/k/v1/record.json'
 
@@ -42,6 +43,37 @@ coupon.post('schedule',async(c) => {
         }
     }
     console.log(postBody);
+    const options = {
+        method: 'POST',
+        headers : headers,
+        body: JSON.stringify(postBody)
+    }
+    const res = await fetch(url, options)
+    return res;
+});
+
+// クーポン利用履歴アプリへ登録
+coupon.post('achievement',async(c) => {
+    const url = 'https://jb-foodloss-service.cybozu.com/k/v1/record.json'
+
+    // kintoneのAPIトークン
+    const achievementToken = 'Nf25r39ldkKO1qgTfgbywZS1QIaS779iXUKDDhiO'
+    const scheduleToken = 'bHUPka7lkq3jsFNe16Six1tAzACceo1cDBi6Xzd3'
+
+    const headers = {
+        'Content-Type': 'application/json',
+        "X-Cybozu-API-Token": achievementToken+","+scheduleToken
+    }
+    const body = await c.req.json();
+
+    const postBody = {
+        "app":8,
+        "record":{
+            "coupon_lu":{
+                "value":body.coupon_lu
+            }
+        }
+    }
     const options = {
         method: 'POST',
         headers : headers,
