@@ -1,18 +1,6 @@
 import { Hono } from "hono";
-import { cors } from "hono/cors";
 
 export const coupon = new Hono();
-
-coupon.use(
-  '*',
-  cors({
-    origin: '*',
-    allowHeaders: ['Content-Type'],
-    allowMethods: ['POST', 'GET', 'OPTIONS'],
-    maxAge: 600,
-    credentials: true,
-  })
-)
 
 // クーポン利用登録データへ登録
 coupon.post('schedule',async(c) => {
