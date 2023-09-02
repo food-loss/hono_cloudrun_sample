@@ -66,6 +66,8 @@ coupon.post('achievement',async(c) => {
     }
     const body = await c.req.json();
 
+    console.log(body);
+
     const postBody = {
         "app":8,
         "record":{
