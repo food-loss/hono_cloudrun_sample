@@ -70,7 +70,7 @@ coupon.post('achievement',async(c) => {
         "app":8,
         "record":{
             "coupon_lu":{
-                "value":body.coupon_lu
+                "value":body.coupon_number
             }
         }
     }
