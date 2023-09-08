@@ -9,7 +9,7 @@ webhook.post('notify',async(c) => {
         'Content-Type': 'application/json'
     }
     const c_req = await c.req.json();
-    const message = `クーポンが発行されました。商品名：${c_req.product_name} 次のサイトでクーポンを取得してください。  https://wide-exchanger-394315.web.app/publish?date=${c_req.date}&record-no=${c_req.product_id}&product_name=${c_req.product_name}&coupon=${c_req.coupon}`;
+    const message = `クーポンが発行されました。商品名：${c_req.product_name} 割引額:${c_req.coupon} 次のサイトでクーポンを取得してください。  https://wide-exchanger-394315.web.app/publish?date=${c_req.date}&record-no=${c_req.product_id}&product_name=${c_req.product_name}&coupon=${c_req.coupon}`;
     const options = {
         method: 'POST',
         headers : headers,
