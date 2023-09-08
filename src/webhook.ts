@@ -18,3 +18,24 @@ webhook.post('notify',async(c) => {
     const res = await fetch(url, options)
     return res;
 })
+
+webhook.post('notify/message', async(c) => {
+    const url = teamsEndpoint
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+    const c_req = await c.req.json();
+
+    const title = c_req.title;
+    const message = c_req.message;
+
+    const options = {
+        method: 'POST',
+        headers : headers,
+        body: JSON.stringify({
+            "text": `**${title}**<br />${message}`
+        })
+    }
+    const res = await fetch(url, options)
+    return res;
+})
